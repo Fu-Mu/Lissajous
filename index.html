@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>绘图</title>
+	</head>
+	<body>
+		<canvas id="can" width="600" height="600" style="border: 5px solid grey; border-radius: 10px;"></canvas>
+		<script>
+			var c = document.getElementById("can");
+			var context = c.getContext('2d');
+			//x轴
+            context.beginPath();
+			context.strokeStyle="black";
+			context.moveTo(0,300);
+			context.lineTo(600,300);
+			context.stroke();
+            //y轴
+			context.beginPath();
+			context.strokeStyle="black";
+			context.moveTo(300,0);
+			context.lineTo(300,600);
+			context.stroke();
+            var i=Math.PI/360;
+			timer=setInterval("drawing()",1);
+			var x,y;
+			function drawing()
+			{
+				context.moveTo(300,300);
+					context.strokeRect(300+200*Math.sin(0.014*i+2),300+200*Math.sin(0.01*i),1,1);
+				i+=0.6;
+				if(i>3155)
+				{
+					clearInterval(timer);
+					
+				}
+				
+			}
+		</script>
+	</body>
+</html>
